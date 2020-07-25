@@ -4,7 +4,7 @@ import pandas as pd
 import pickle
 
 # load the model from disk
-loaded_model=pickle.load(open('AQI-Deployment/random_forest_regression_model.pkl', 'rb'))
+loaded_model=pickle.load(open('random_forest_regression_model.pkl', 'rb'))
 app = Flask(__name__)
 
 @app.route('/')
@@ -13,7 +13,7 @@ def home():
 
 @app.route('/predict',methods=['POST'])
 def predict():
-    df=pd.read_csv('AQI-Deployment/real_2017.csv')
+    df=pd.read_csv('real_2017.csv')
     df=df.dropna()
     df1 = df.iloc[1060:1065,2:-1]
     df1=df1.dropna()
